@@ -27,12 +27,21 @@
     text-align: center !important;
 
     .preview-box {
-      button {
-        background-color: transparent;
-        border: none;
-        margin-bottom: 5px;
-        margin-top: -2px;
-        font-size: 16px;
+      .btn-box {
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 10px;
+
+        button.back-button {
+          font-size: 30px;
+        }
+        button {
+          background-color: transparent;
+          border: none;
+          margin-bottom: 5px;
+          margin-top: -2px;
+          font-size: 14px;
+        }
       }
     }
 

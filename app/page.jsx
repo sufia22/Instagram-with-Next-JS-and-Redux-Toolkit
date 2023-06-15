@@ -8,6 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectPost } from "./postSlice";
 import { deletePost, fetchAllPosts } from "./postApi";
 
+// set metadata
+export const metadata = {
+  title: "Instagram",
+  description: "Instagram is here",
+};
+
 export default function Home() {
   const dispatch = useDispatch();
   const { posts } = useSelector(selectPost);
@@ -211,104 +217,110 @@ export default function Home() {
 
               {/* user box */}
               <div className="user-box mt-5">
-                {posts.map((item, index) => {
-                  return (
-                    <div className="user-post-box" key={index}>
-                      <div className="user-info d-flex justify-content-between">
-                        <div className="user-title d-flex gap-3 align-content-center ">
-                          <div className="profile-photo ">
-                            <Image
-                              src={
-                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiv3_7feBQf5fP_TSXxW4Nz-NOhsx9JA-_6Q&usqp=CAU"
-                              }
-                              alt=""
-                              height={40}
-                              width={40}
-                            />
-                          </div>
-                          <div className="user-bio">
-                            <span>
-                              Sufia Akter
-                              <span
-                                style={{ fontWeight: "200", color: "#777" }}
-                              >
-                                • 2d
-                              </span>
-                            </span>
-                            <p>Web Developer</p>
-                          </div>
-                        </div>
-
-                        <div className="action-bar  text-right">
-                          <div class="dropdown my-3">
-                            <button class="dropbtn">
-                              <i class="bx bx-dots-horizontal-rounded"></i>
-                            </button>
-                            <div class="dropdown-content">
-                              <Link
-                                href=""
-                                onClick={() => handleEdit(item._id)}
-                              >
-                                Edit
-                              </Link>
-                              <Link
-                                href=""
-                                onClick={() => handleDelete(item._id)}
-                              >
-                                Delete
-                              </Link>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="post">
-                        <div className="post-photo">
-                          <div className="post-photo-box">
-                            <Image
-                              src={item.photo}
-                              alt=""
-                              height={450}
-                              width={400}
-                              className="w-100"
-                            />
-                          </div>
-
-                          <div className="reactions-box ">
-                            <div className="reactions d-flex gap-2 mt-2 ">
-                              <div className="left-bar">
-                                <button>
-                                  <i class="bx bx-heart"></i>
-                                </button>
-                                <button>
-                                  <i class="bx bx-message-rounded"></i>
-                                </button>
-                                <button>
-                                  <i class="bx bx-paper-plane"></i>
-                                </button>
-                              </div>
-                              <div className="right-bar">
-                                <button>
-                                  <i class="bx bx-bookmark"></i>
-                                </button>
-                              </div>
-                            </div>
-                            <div className="likes mt-2">
-                              <p>100 likes</p>
-                            </div>
-                            <div className="comment-box">
-                              <input
-                                type="text"
-                                placeholder="Add a comment..."
+                {posts.length > 0 ? (
+                  posts.map((item, index) => {
+                    return (
+                      <div className="user-post-box" key={index}>
+                        <div className="user-info d-flex justify-content-between">
+                          <div className="user-title d-flex gap-3 align-content-center ">
+                            <div className="profile-photo ">
+                              <Image
+                                src={
+                                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiv3_7feBQf5fP_TSXxW4Nz-NOhsx9JA-_6Q&usqp=CAU"
+                                }
+                                alt=""
+                                height={40}
+                                width={40}
                               />
                             </div>
+                            <div className="user-bio">
+                              <span>
+                                Sufia Akter
+                                <span
+                                  style={{ fontWeight: "200", color: "#777" }}
+                                >
+                                  • 2d
+                                </span>
+                              </span>
+                              <p>Web Developer</p>
+                            </div>
+                          </div>
+
+                          <div className="action-bar  text-right">
+                            <div class="dropdown my-3">
+                              <button class="dropbtn">
+                                <i class="bx bx-dots-horizontal-rounded"></i>
+                              </button>
+                              <div class="dropdown-content">
+                                <Link
+                                  href=""
+                                  onClick={() => handleEdit(item._id)}
+                                >
+                                  Edit
+                                </Link>
+                                <Link
+                                  href=""
+                                  onClick={() => handleDelete(item._id)}
+                                >
+                                  Delete
+                                </Link>
+                              </div>
+                            </div>
                           </div>
                         </div>
+
+                        <div className="post">
+                          <div className="post-photo">
+                            <div className="post-photo-box">
+                              <Image
+                                src={item.photo}
+                                alt=""
+                                height={550}
+                                width={400}
+                                className="w-100"
+                              />
+                            </div>
+
+                            <div className="reactions-box ">
+                              <div className="reactions d-flex gap-2 mt-2 ">
+                                <div className="left-bar">
+                                  <button>
+                                    <i class="bx bx-heart"></i>
+                                  </button>
+                                  <button>
+                                    <i class="bx bx-message-rounded"></i>
+                                  </button>
+                                  <button>
+                                    <i class="bx bx-paper-plane"></i>
+                                  </button>
+                                </div>
+                                <div className="right-bar">
+                                  <button>
+                                    <i class="bx bx-bookmark"></i>
+                                  </button>
+                                </div>
+                              </div>
+                              <div className="likes mt-2">
+                                <p>100 likes</p>
+                              </div>
+                              <div className="comment-box">
+                                <input
+                                  type="text"
+                                  placeholder="Add a comment..."
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr />
                       </div>
-                      <hr />
-                    </div>
-                  );
-                })}
+                    );
+                  })
+                ) : (
+                  <div className="no-post text-center mt-5">
+                    <span>No post found</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>

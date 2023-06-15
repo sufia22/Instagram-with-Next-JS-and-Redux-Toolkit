@@ -6,11 +6,11 @@ import { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { createPost } from "@/app/postApi";
+import { BsArrowLeft } from "react-icons/bs";
 
 export default function CreateModal({ show, onHide }) {
   const dispatch = useDispatch();
   const [photo, setPhoto] = useState(null);
-  const [preview, setPreview] = useState(null);
 
   const preset_key = "instagramWithNextJS";
   const cloud_name = "dzyescku8";
@@ -18,6 +18,11 @@ export default function CreateModal({ show, onHide }) {
   // handle image upload
   const handleImageUpload = (e) => {
     setPhoto(e.target.files[0]);
+  };
+
+  // handle back
+  const handleBack = () => {
+    setPhoto(null);
   };
 
   // handle post submit
@@ -50,21 +55,26 @@ export default function CreateModal({ show, onHide }) {
           <p>Create new post</p>
           <hr />
         </Modal.Header> */}
-        <Modal.Body className="modal-body pt-3">
+        <Modal.Body className="modal-body ">
           <div className="post-box">
             <div className="search-button text-center">
               <form onSubmit={handlePostSubmit}>
                 {photo ? (
-                  <div className="preview-box mb-5">
-                    <button className="" type="submit">
-                      submit
-                    </button>
+                  <div className="preview-box ">
+                    <div className="btn-box ">
+                      <button className="back-button" onClick={handleBack}>
+                        <BsArrowLeft />
+                      </button>
+                      <button className="" type="submit">
+                        Share
+                      </button>
+                    </div>
 
                     <Image
                       className="w-100"
                       src={URL.createObjectURL(photo)}
                       alt=""
-                      height={400}
+                      height={500}
                       width={400}
                     />
                   </div>
